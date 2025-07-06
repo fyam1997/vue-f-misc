@@ -1,0 +1,25 @@
+{
+  "name": "vue-chat-api-config",
+  "version": "0.1.0-dev.1",
+  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/vue-chat-api-config.es.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "demo": "vite --host",
+    "build": "rimraf dist && vue-tsc && vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "rimraf": "^6.0.1",
+    "vite": "^4.3.9",
+    "vue-tsc": "^2.2.10"
+  }
+}
