@@ -14,7 +14,9 @@
     "build": "rimraf dist && vue-tsc && vite build"
   },
   "peerDependencies": {
-    "vue": "^3.4.0"
+    "vue": "^3.4.0",
+    "vuetify": "^3.0.0",
+    "material-design-icons-iconfont": "^6.7.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
