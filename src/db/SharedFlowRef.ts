@@ -1,13 +1,14 @@
 import {SharedFlow} from "./SharedFlow";
-import {WatchOptions} from "@vue/runtime-core";
-import {ref, toRaw, watch} from "vue";
+import {Ref, ref, toRaw, watch, WatchOptions} from "vue";
 
 export function useSharedFlow<T>(
     sharedFlow: SharedFlow<T | undefined>,
     defaultValue: T,
     options?: WatchOptions,
-) {
-    const vueRef = ref<T>(defaultValue)
+): Ref<T> {
+    // not using ref(defaultValue) to solve type warning
+    const vueRef = ref()
+    vueRef.value = defaultValue
     sharedFlow.collect(value => {
         if (value === undefined) {
             vueRef.value = defaultValue
