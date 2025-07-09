@@ -62,14 +62,15 @@ export class APIConfigViewModel {
     async deleteConfig() {
         const deleteID = this.id.value
         await this.store.config.emit(undefined)
-        if (this.idList.value.length === 1) {
+        const list = this.idList.value
+        const index = list.findIndex(item => item.id === deleteID)
+        if (list.length === 1) {
             await this.addConfig()
-        } else {
-            const index = this.idList.value.findIndex(item => item.id === deleteID)
-            this.id.value = this.idList.value[index - 1].id
-            await this.store.config.setKey(this.id.value)
         }
-        this.idList.value = this.idList.value.filter(item => item.id !== deleteID)
+        list.splice(index, 1)
+        const newIndex = Math.min(index, list.length - 1)
+        const newID = list[newIndex].id
+        await this.selectConfig(newID)
     }
 
     async selectConfig(id: number) {
