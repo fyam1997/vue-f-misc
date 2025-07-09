@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import {APIConfigViewModel} from "../apiconfig/APIConfigViewModel";
-import {APIConfigStore} from "../apiconfig/Models";
 import {VBtn, VCombobox, VTextField} from 'vuetify/components'
+import IndexManageDialog from "./IndexManageDialog.vue"
 
-const props = defineProps({
-    store: {type: APIConfigStore, required: true},
-    clientID: {type: String, required: true},
-})
-const viewModel = new APIConfigViewModel(props.store, props.clientID)
+const viewModel = APIConfigViewModel.injectOrCreate()
 const apiConfig = viewModel.config
 const idList = viewModel.idList
 const selectedIndex = viewModel.selectedIndex

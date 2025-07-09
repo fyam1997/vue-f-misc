@@ -23,6 +23,9 @@ export class APIConfigStore {
     idList = apiConfig<APIConfigIndex[]>("index")
     config = apiConfig<APIConfigModel>(0)
 
+    constructor(public googleClientID: string) {
+    }
+
     async init() {
         const list = await this.idList.loadValue()
         if (list === undefined) {
@@ -40,4 +43,6 @@ export class APIConfigStore {
             await this.config.emit({baseURL: "", apiKey: "", model: ""})
         }
     }
+
+    static readonly KEY = Symbol("APIConfigStore")
 }

@@ -2,7 +2,7 @@ import {APIConfigBackup, APIConfigModel, APIConfigStore} from "./Models"
 import {apiConfig} from "../db/SharedStorage"
 import {getSimpleDriveFile, setSimpleDriveFile} from "../google/SimpleDriveFile"
 import {useSharedFlow} from "../db/SharedFlowRef"
-import {computed} from "vue";
+import {computed, inject, provide} from "vue";
 
 export class APIConfigViewModel {
     id
@@ -10,7 +10,7 @@ export class APIConfigViewModel {
     config
     selectedIndex
 
-    constructor(private store: APIConfigStore, private clientID: string) {
+    constructor(private store: APIConfigStore) {
         this.id = useSharedFlow(store.id, 0)
         this.idList = useSharedFlow(store.idList, [], {deep: true})
         this.config = useSharedFlow(store.config, {baseURL: "", apiKey: "", model: ""}, {deep: true})
@@ -33,11 +33,11 @@ export class APIConfigViewModel {
             }
         }
         const backup = {configs: configs}
-        await setSimpleDriveFile(this.clientID, "APIConfigs.json", JSON.stringify(backup))
+        await setSimpleDriveFile(this.store.googleClientID, "APIConfigs.json", JSON.stringify(backup))
     }
 
     async loadBackup() {
-        const text = (await getSimpleDriveFile(this.clientID, "APIConfigs.json"))!
+        const text = (await getSimpleDriveFile(this.store.googleClientID, "APIConfigs.json"))!
         const backup: APIConfigBackup = JSON.parse(text)
 
         const idList = this.idList.value
@@ -76,5 +76,20 @@ export class APIConfigViewModel {
     async selectConfig(id: number) {
         this.id.value = id
         await this.store.config.setKey(id)
+    }
+
+    static readonly KEY = Symbol("APIConfigViewModel")
+
+    static injectOrCreate(): APIConfigViewModel {
+        let viewModel = inject<APIConfigViewModel>(APIConfigViewModel.KEY)
+        if (!viewModel) {
+            const store = inject<APIConfigStore>(APIConfigStore.KEY)
+            if (!store) {
+                throw new Error("please provide APIConfigStore")
+            }
+            viewModel = new APIConfigViewModel(store)
+            provide(APIConfigViewModel.KEY, viewModel)
+        }
+        return viewModel
     }
 }
