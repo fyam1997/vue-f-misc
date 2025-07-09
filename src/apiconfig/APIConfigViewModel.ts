@@ -81,15 +81,15 @@ export class APIConfigViewModel {
     static readonly KEY = Symbol("APIConfigViewModel")
 
     static injectOrCreate(): APIConfigViewModel {
-        let viewModel = inject<APIConfigViewModel>(APIConfigViewModel.KEY)
-        if (!viewModel) {
+        const factory = () => {
             const store = inject<APIConfigStore>(APIConfigStore.KEY)
             if (!store) {
                 throw new Error("please provide APIConfigStore")
             }
-            viewModel = new APIConfigViewModel(store)
+            const viewModel = new APIConfigViewModel(store)
             provide(APIConfigViewModel.KEY, viewModel)
+            return viewModel
         }
-        return viewModel
+        return inject<APIConfigViewModel>(APIConfigViewModel.KEY, factory, true)
     }
 }
