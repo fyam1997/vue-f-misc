@@ -11,21 +11,21 @@
   ],
   "scripts": {
     "demo": "vite --host",
-    "build": "rimraf dist && vue-tsc && vite build"
+    "build": "rimraf dist && vite build"
   },
   "peerDependencies": {
+    "idb": "^8.0.3",
+    "material-design-icons-iconfont": "^6.7.0",
     "sortablejs": "^1.15.6",
     "vue": "^3.4.0",
-    "vuetify": "^3.0.0",
-    "material-design-icons-iconfont": "^6.7.0",
-    "idb": "^8.0.3"
+    "vuetify": "^3.0.0"
   },
   "devDependencies": {
     "@types/google.accounts": "^0.0.17",
     "@types/sortablejs": "^1.15.8",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^5.2.3",
     "rimraf": "^6.0.1",
-    "vite": "^4.3.9",
-    "vue-tsc": "^2.2.10"
+    "vite": "^6.2.4",
+    "vite-plugin-dts": "^4.5.4"
   }
 }
