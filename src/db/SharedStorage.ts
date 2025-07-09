@@ -9,7 +9,7 @@ const sharedDB = cachedDB(() => {
     return openDB("shared", 1, {
         upgrade(db) {
             db.createObjectStore(SharedStore.APIConfig)
-        }
+        },
     })
 })
 

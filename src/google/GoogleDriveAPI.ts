@@ -50,7 +50,7 @@ export async function createDriveTextFile(
         name: string,
         content: string,
         token: string,
-    }
+    },
 ): Promise<DriveFileBaseMeta> {
     const metadata = {
         name: name,
@@ -80,7 +80,7 @@ export async function updateDriveTextFile(
         name: string,
         content: string,
         token: string,
-    }
+    },
 ): Promise<DriveFileBaseMeta> {
     const metadata = {
         name: name,
@@ -107,7 +107,7 @@ export async function deleteDriveFile(
     {id, token}: {
         id: string,
         token: string,
-    }
+    },
 ) {
     const response = await fetch(`https://content.googleapis.com/drive/v3/files/${id}`, {
         method: 'DELETE',

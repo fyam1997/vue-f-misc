@@ -28,7 +28,7 @@ export class APIConfigViewModel {
             if (config !== undefined) {
                 configs.push({
                     index: index,
-                    config: config
+                    config: config,
                 })
             }
         }

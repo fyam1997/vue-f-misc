@@ -13,7 +13,7 @@ export default defineConfig({
             entry: '../src/index.ts',
             name: name,
             formats: ['es'],
-            fileName: (format) => `${name}.${format}.js`
+            fileName: (format) => `${name}.${format}.js`,
         },
         rollupOptions: {
             // external modules won't be bundled into your library

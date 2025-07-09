@@ -9,7 +9,7 @@ onMounted(() => store.init())
 </script>
 
 <template>
-  <div>
-    <APIConfigPanel client-i-d="" :store="store"/>
-  </div>
+    <div>
+        <APIConfigPanel client-i-d="" :store="store"/>
+    </div>
 </template>

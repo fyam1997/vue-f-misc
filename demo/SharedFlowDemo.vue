@@ -13,10 +13,10 @@ const fullText = computed(() => JSON.stringify(demoSharedFlow.value))
 </script>
 
 <template>
-  <div>
-    <h3>Shared Flow</h3>
-    <div>{{ fullText }}</div>
-    <v-text-field v-model="demoSharedFlow.name.firstname"/>
-    <v-text-field v-model="demoSharedFlow.name.lastname"/>
-  </div>
+    <div>
+        <h3>Shared Flow</h3>
+        <div>{{ fullText }}</div>
+        <v-text-field v-model="demoSharedFlow.name.firstname"/>
+        <v-text-field v-model="demoSharedFlow.name.lastname"/>
+    </div>
 </template>

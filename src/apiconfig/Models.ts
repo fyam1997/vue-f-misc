@@ -37,7 +37,7 @@ export class APIConfigStore {
 
         const config = await this.config.setKey(id)
         if (config === undefined) {
-            await this.config.emit({baseURL: "", apiKey: "", model: "",})
+            await this.config.emit({baseURL: "", apiKey: "", model: ""})
         }
     }
 }

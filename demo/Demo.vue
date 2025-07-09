@@ -17,12 +17,12 @@ const selectedDemo = shallowRef(demos[0])
         <v-navigation-drawer permanent>
             <v-list>
                 <v-list-item
-                        v-for="demo in demos"
-                        :key="demo.name"
-                        :value="demo.name"
-                        :title="demo.name"
-                        :active="selectedDemo.name === demo.name"
-                        @click="selectedDemo = demo"
+                    v-for="demo in demos"
+                    :key="demo.name"
+                    :value="demo.name"
+                    :title="demo.name"
+                    :active="selectedDemo.name === demo.name"
+                    @click="selectedDemo = demo"
                 />
             </v-list>
         </v-navigation-drawer>
