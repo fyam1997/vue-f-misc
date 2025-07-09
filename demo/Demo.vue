@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import SharedFlowDemo from "./SharedFlowDemo.vue";
 import {shallowRef} from "vue";
-import APIConfigPanelDemo from "./APIConfigPanelDemo.vue";
-import APIConfigDialogDemo from "./APIConfigDialogDemo.vue"
+import ApiConfigDemo from "./APIConfigDemo.vue";
 
 const demos = [
-    {name: "APIConfigPanel", component: APIConfigPanelDemo},
+    {name: "APIConfigPanel", component: ApiConfigDemo},
     {name: "SharedFlow", component: SharedFlowDemo},
-    {name: "APIConfigDialog", component: APIConfigDialogDemo},
 ]
 const selectedDemo = shallowRef(demos[0])
 </script>
@@ -15,7 +13,7 @@ const selectedDemo = shallowRef(demos[0])
 <template>
     <v-app>
         <v-navigation-drawer permanent>
-            <v-list>
+            <v-list class="drawer-list">
                 <v-list-item
                     v-for="demo in demos"
                     :key="demo.name"
@@ -36,10 +34,25 @@ const selectedDemo = shallowRef(demos[0])
 </template>
 
 <style scoped>
+.drawer-list {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawer-list > * {
+    width: 100%;
+}
+
 .main-container {
     height: 100vh;
     overscroll-behavior: auto;
-    padding-left: 16px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-container > * {
