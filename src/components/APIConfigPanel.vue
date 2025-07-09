@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {APIConfigViewModel} from "../apiconfig/APIConfigViewModel";
-import {APIConfigIndex, APIConfigStore} from "../apiconfig/Models";
-import {VBtn, VSelect, VTextField} from 'vuetify/components'
+import {APIConfigStore} from "../apiconfig/Models";
+import {VBtn, VCombobox, VTextField} from 'vuetify/components'
 
 const props = defineProps({
     store: {type: APIConfigStore, required: true},
@@ -12,18 +12,16 @@ const apiConfig = viewModel.config
 const idList = viewModel.idList
 const selectedIndex = viewModel.selectedIndex
 
-function indexItemProps(item: APIConfigIndex) {
-    let name = item.name
-    if (!name) {
-        name = "No name"
+function onIndexSelected(value: any) {
+    if (value && typeof value === "object" && "id" in value) {
+        viewModel.selectConfig(value.id)
     }
-    return {title: name}
 }
 </script>
 
 <template>
     <div class="d-flex flex-column ga-4">
-        <div class="d-flex flex-row align-self-end">
+        <div class="w-100 d-flex flex-row flex-wrap">
             <v-btn
                 icon="md:backup"
                 variant="plain"
@@ -36,6 +34,7 @@ function indexItemProps(item: APIConfigIndex) {
                 @click="viewModel.loadBackup()"
                 title="Download from drive"
             />
+            <v-spacer/>
             <v-btn
                 icon="md:note_add"
                 variant="plain"
@@ -49,12 +48,13 @@ function indexItemProps(item: APIConfigIndex) {
                 title="Delete config"
             />
         </div>
-        <v-select
+        <v-combobox
             variant="outlined"
             :model-value="selectedIndex"
             :items="idList"
-            :item-props="indexItemProps"
-            @update:model-value="index=>viewModel.selectConfig(index.id)"
+            item-title="name"
+            item-value="id"
+            @update:model-value="onIndexSelected"
             hide-details
         />
         <v-text-field
