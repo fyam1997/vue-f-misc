@@ -8,7 +8,7 @@ export function useSharedFlow<T>(
 ): Ref<T> {
     // not using ref(defaultValue) to solve type warning
     const vueRef = ref()
-    vueRef.value = defaultValue
+    vueRef.value = sharedFlow.lastValue ?? defaultValue
     sharedFlow.collect(value => {
         if (value === undefined) {
             vueRef.value = defaultValue
