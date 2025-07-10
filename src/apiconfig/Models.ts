@@ -29,7 +29,8 @@ export class APIConfigStore {
     async init() {
         const list = await this.idList.loadValue()
         if (list === undefined) {
-            await this.idList.emit([{id: Date.now(), name: ""}])
+            const newID = Date.now()
+            await this.idList.emit([{id: newID, name: "New Config " + newID}])
         }
 
         let id = await this.id.loadValue()

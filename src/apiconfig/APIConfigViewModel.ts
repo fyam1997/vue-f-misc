@@ -21,7 +21,7 @@ export class APIConfigViewModel {
     }
 
     async saveBackup() {
-        if (!confirm("Will overwrite the previously uploaded configuration.")){
+        if (!confirm("Will overwrite the previously uploaded configuration.")) {
             return
         }
         const configs = []
@@ -40,7 +40,7 @@ export class APIConfigViewModel {
     }
 
     async loadBackup() {
-        if (!confirm("Will overwrite the local configuration. New Added config will be kept.")){
+        if (!confirm("Will overwrite the local configuration. New Added config will be kept.")) {
             return
         }
         const text = (await getSimpleDriveFile(this.store.googleClientID, "APIConfigs.json"))!
@@ -61,7 +61,7 @@ export class APIConfigViewModel {
 
     async addConfig() {
         const newID = Date.now()
-        this.idList.value.push({id: newID, name: ""})
+        this.idList.value.push({id: newID, name: "New Config " + newID})
         await this.selectConfig(newID)
     }
 
