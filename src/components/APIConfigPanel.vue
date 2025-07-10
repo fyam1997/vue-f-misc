@@ -31,7 +31,11 @@ function onIndexSelected(value: any) {
                 title="Download from drive"
             />
             <v-spacer/>
-            <IndexManageDialog/>
+            <IndexManageDialog
+                :list="idList"
+                idProp="id"
+                titleProp="name"
+            />
             <v-btn
                 icon="md:note_add"
                 variant="plain"

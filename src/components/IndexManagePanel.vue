@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import Sortable from 'sortablejs'
 import {useTemplateRef, watch} from "vue"
-import {APIConfigViewModel} from "../apiconfig/APIConfigViewModel"
 
-const viewModel = APIConfigViewModel.injectOrCreate()
-const idList = viewModel.idList
+export interface IndexManagePanelProps {
+    list: Array<any>
+    titleReadonly?: boolean // default false
+    idProp?: string // default 'id'
+    titleProp?: string // default 'name'
+}
+
+const props = defineProps<IndexManagePanelProps>()
 const itemsRef = useTemplateRef('items')
 
 watch(itemsRef, element => {
@@ -16,8 +21,8 @@ watch(itemsRef, element => {
             handle: '.handle',
             onEnd: (evt) => {
                 if (evt.oldIndex !== undefined && evt.newIndex !== undefined) {
-                    const movedItem = idList.value.splice(evt.oldIndex, 1)[0]
-                    idList.value.splice(evt.newIndex, 0, movedItem)
+                    const movedItem = props.list.splice(evt.oldIndex, 1)[0]
+                    props.list.splice(evt.newIndex, 0, movedItem)
                 }
             },
         },
@@ -28,9 +33,9 @@ watch(itemsRef, element => {
 <template>
     <div ref="items">
         <div
-            v-for="item in idList"
+            v-for="item in props.list"
             class="d-flex flex-row align-center pt-2"
-            :key="item.id"
+            :key="item[props.idProp ?? 'id']"
         >
             <v-icon-btn
                 class="handle"
@@ -39,8 +44,9 @@ watch(itemsRef, element => {
             />
             <VTextField
                 class="pr-6"
-                v-model="item.name"
+                v-model="item[props.titleProp?? 'name']"
                 hide-details
+                :readonly="props.titleReadonly"
             />
         </div>
     </div>

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import {VBtn, VCard, VCardActions, VCardText, VDialog} from 'vuetify/components'
 import {ref} from "vue"
-import IndexManagePanel from "./IndexManagePanel.vue"
+import IndexManagePanel, {IndexManagePanelProps} from "./IndexManagePanel.vue"
 
+const props = defineProps<IndexManagePanelProps>()
 const showDialog = ref(false)
 </script>
 
@@ -24,7 +25,7 @@ const showDialog = ref(false)
 
         <v-card>
             <v-card-text class="flex-grow-1">
-                <IndexManagePanel/>
+                <IndexManagePanel v-bind="props"/>
             </v-card-text>
 
             <v-card-actions>
