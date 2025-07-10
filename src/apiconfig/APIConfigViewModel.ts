@@ -21,6 +21,9 @@ export class APIConfigViewModel {
     }
 
     async saveBackup() {
+        if (!confirm("Will overwrite the previously uploaded configuration.")){
+            return
+        }
         const configs = []
         const idList = this.idList.value
         for (const index of idList) {
@@ -37,6 +40,9 @@ export class APIConfigViewModel {
     }
 
     async loadBackup() {
+        if (!confirm("Will overwrite the local configuration. New Added config will be kept.")){
+            return
+        }
         const text = (await getSimpleDriveFile(this.store.googleClientID, "APIConfigs.json"))!
         const backup: APIConfigBackup = JSON.parse(text)
 
