@@ -1,5 +1,7 @@
 export * from './components/APIConfigPanel.vue';
 export * from './components/APIConfigDialog.vue';
+export * from './components/IndexManageDialog.vue';
+export * from './components/IndexManagePanel.vue';
 export * from './apiconfig/APIConfigViewModel';
 export * from './apiconfig/Models';
 export * from './db/DBDataFlow';
