@@ -7,8 +7,8 @@ import {useWindowSize} from "@vueuse/core"
 import {VList, VListItem, VMain} from 'vuetify/components'
 
 const demos = [
-    {name: "IndexManage", component: IndexManageDemo},
     {name: "APIConfigPanel", component: ApiConfigDemo},
+    {name: "IndexManage", component: IndexManageDemo},
     {name: "SharedFlow", component: SharedFlowDemo},
 ]
 const selectedDemo = shallowRef(demos[0])
