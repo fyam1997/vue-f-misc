@@ -2,10 +2,12 @@
 import SharedFlowDemo from "./SharedFlowDemo.vue";
 import {computed, ref, shallowRef} from "vue";
 import ApiConfigDemo from "./APIConfigDemo.vue";
+import IndexManageDemo from "./IndexManageDemo.vue"
 import {useWindowSize} from "@vueuse/core"
-import {VList, VListItem, VMain, VNavigationDrawer} from 'vuetify/components'
+import {VList, VListItem, VMain} from 'vuetify/components'
 
 const demos = [
+    {name: "IndexManage", component: IndexManageDemo},
     {name: "APIConfigPanel", component: ApiConfigDemo},
     {name: "SharedFlow", component: SharedFlowDemo},
 ]

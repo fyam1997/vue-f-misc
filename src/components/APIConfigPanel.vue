@@ -31,6 +31,7 @@ function onIndexSelected(value: any) {
                 title="Download from drive"
             />
             <v-spacer/>
+            <IndexManageDialog/>
             <v-btn
                 icon="md:note_add"
                 variant="plain"
@@ -51,13 +52,6 @@ function onIndexSelected(value: any) {
             item-title="name"
             item-value="id"
             @update:model-value="onIndexSelected"
-            hide-details
-        />
-        <v-text-field
-            variant="outlined"
-            label="Config name"
-            v-model="selectedIndex.name"
-            class="flex-grow-0"
             hide-details
         />
         <v-text-field
