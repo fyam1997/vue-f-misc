@@ -1,9 +1,9 @@
 {
-  "name": "vue-chat-api-config",
+  "name": "vue-f-misc",
   "version": "0.1.0-dev.1",
   "private": true,
   "main": "dist/index.js",
-  "module": "dist/vue-chat-api-config.es.js",
+  "module": "dist/vue-f-misc.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist",
