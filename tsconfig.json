@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "useDefineForClassFields": true,
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -27,6 +27,6 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/index.js"
+    "src/index.ts"
   ]
 }
