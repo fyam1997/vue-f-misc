@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {APIConfigStore} from "../src";
-import APIConfigPanel from "../src/components/APIConfigPanel.vue";
-import {onMounted, provide, ref, watch} from "vue";
-import APIConfigDialog from "../src/components/APIConfigDialog.vue"
+import {onMounted, provide, ref, watch} from "vue"
+import {APIConfigDialog, APIConfigPanel, APIConfigStore} from "vue-f-misc"
 
 const store = new APIConfigStore("")
 provide(APIConfigStore.KEY, store)

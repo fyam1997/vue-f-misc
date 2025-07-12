@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import {APIConfigStore, useSharedFlow} from "../src";
-import {computed, onMounted, provide, ref, watch} from "vue";
-import IndexManagePanel from "../src/components/IndexManagePanel.vue"
-import IndexManageDialog from "../src/components/IndexManageDialog.vue"
+import {computed, onMounted, provide, ref, watch} from "vue"
 import {VCard} from 'vuetify/components'
+import {APIConfigStore, IndexManageDialog, IndexManagePanel, useSharedFlow} from "vue-f-misc"
 
 const store = new APIConfigStore("")
 provide(APIConfigStore.KEY, store)

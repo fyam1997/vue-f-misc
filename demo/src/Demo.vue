@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SharedFlowDemo from "./SharedFlowDemo.vue";
-import {computed, ref, shallowRef} from "vue";
-import ApiConfigDemo from "./APIConfigDemo.vue";
+import SharedFlowDemo from "./SharedFlowDemo.vue"
+import {computed, ref, shallowRef} from "vue"
+import ApiConfigDemo from "./APIConfigDemo.vue"
 import IndexManageDemo from "./IndexManageDemo.vue"
 import {useWindowSize} from "@vueuse/core"
 import {VList, VListItem, VMain} from 'vuetify/components'
