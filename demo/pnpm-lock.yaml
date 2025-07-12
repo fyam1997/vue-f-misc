@@ -21,8 +21,8 @@ importers:
         specifier: ^3.4.0
         version: 3.5.17
       vue-f-misc:
-        specifier: github:fyam1997/vue-f-misc#feature/separate-demo
-        version: https://codeload.github.com/fyam1997/vue-f-misc/tar.gz/36ea88d5887e54a14ec1ddb6320b2ebedfa2a504(idb@8.0.3)(material-design-icons-iconfont@6.7.0)(sortablejs@1.15.6)(vue@3.5.17)(vuetify@3.9.0(vue@3.5.17))
+        specifier: link:..
+        version: link:..
       vuetify:
         specifier: ^3.0.0
         version: 3.9.0(vue@3.5.17)
@@ -606,16 +606,6 @@ packages:
       yaml:
         optional: true
 
-  vue-f-misc@https://codeload.github.com/fyam1997/vue-f-misc/tar.gz/36ea88d5887e54a14ec1ddb6320b2ebedfa2a504:
-    resolution: {tarball: https://codeload.github.com/fyam1997/vue-f-misc/tar.gz/36ea88d5887e54a14ec1ddb6320b2ebedfa2a504}
-    version: 0.1.0-dev.4
-    peerDependencies:
-      idb: ^8.0.3
-      material-design-icons-iconfont: ^6.7.0
-      sortablejs: ^1.15.6
-      vue: ^3.4.0
-      vuetify: ^3.0.0
-
   vue@3.5.17:
     resolution: {integrity: sha512-LbHV3xPN9BeljML+Xctq4lbz2lVHCR6DtbpTf5XIO6gugpXUN49j2QQPcMj086r9+AkJ0FfUT8xjulKKBkkr9g==}
     peerDependencies:
@@ -1106,14 +1096,6 @@ snapshots:
       tinyglobby: 0.2.14
     optionalDependencies:
       fsevents: 2.3.3
-
-  vue-f-misc@https://codeload.github.com/fyam1997/vue-f-misc/tar.gz/36ea88d5887e54a14ec1ddb6320b2ebedfa2a504(idb@8.0.3)(material-design-icons-iconfont@6.7.0)(sortablejs@1.15.6)(vue@3.5.17)(vuetify@3.9.0(vue@3.5.17)):
-    dependencies:
-      idb: 8.0.3
-      material-design-icons-iconfont: 6.7.0
-      sortablejs: 1.15.6
-      vue: 3.5.17
-      vuetify: 3.9.0(vue@3.5.17)
 
   vue@3.5.17:
     dependencies:
