@@ -15,7 +15,7 @@ watch(googleID, id => store.googleClientID = id)
         <v-text-field style="max-width: 600px; width: 100%" v-model="googleID" label="Google Client ID"/>
         <APIConfigDialog/>
         <br>
-        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;">
+        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;resize: both;">
             <APIConfigPanel/>
         </v-card>
     </div>

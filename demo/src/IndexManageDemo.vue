@@ -26,7 +26,7 @@ const titleEditable = ref(true)
             :titleEditable="titleEditable"
         />
         <br>
-        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;">
+        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;resize: both;">
             <IndexManagePanel
                 :list="idList"
                 titleProp="name"
