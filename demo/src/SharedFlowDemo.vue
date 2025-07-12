@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {SharedFlow, useSharedFlow} from "../src";
 import {computed} from "vue";
+import {SharedFlow, useSharedFlow} from "vue-f-misc"
 
 type TestType = { name: { firstname: string, lastname: string } }
 const sharedFlow = new SharedFlow<TestType>()

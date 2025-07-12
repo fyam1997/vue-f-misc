@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import {APIConfigStore, useSharedFlow} from "../src";
-import {computed, onMounted, provide, ref, watch} from "vue";
-import IndexManagePanel from "../src/components/IndexManagePanel.vue"
-import IndexManageDialog from "../src/components/IndexManageDialog.vue"
+import {computed, onMounted, provide, ref, watch} from "vue"
 import {VCard} from 'vuetify/components'
+import {APIConfigStore, IndexManageDialog, IndexManagePanel, useSharedFlow} from "vue-f-misc"
 
 const store = new APIConfigStore("")
 provide(APIConfigStore.KEY, store)
@@ -28,7 +26,7 @@ const titleEditable = ref(true)
             :titleEditable="titleEditable"
         />
         <br>
-        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;">
+        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;resize: both;">
             <IndexManagePanel
                 :list="idList"
                 titleProp="name"

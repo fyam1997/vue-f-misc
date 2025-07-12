@@ -10797,7 +10797,7 @@ const Hf = { ref: "items" }, Wf = /* @__PURE__ */ Aa({
   for (const [a, l] of t)
     n[a] = l;
   return n;
-}, Kf = /* @__PURE__ */ Gf(Wf, [["__scopeId", "data-v-3935a862"]]), Uf = /* @__PURE__ */ Aa({
+}, Kf = /* @__PURE__ */ Gf(Wf, [["__scopeId", "data-v-9990c78f"]]), Uf = /* @__PURE__ */ Aa({
   __name: "IndexManageDialog",
   props: {
     list: {},

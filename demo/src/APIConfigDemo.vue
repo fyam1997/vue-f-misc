@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {APIConfigStore} from "../src";
-import APIConfigPanel from "../src/components/APIConfigPanel.vue";
-import {onMounted, provide, ref, watch} from "vue";
-import APIConfigDialog from "../src/components/APIConfigDialog.vue"
+import {onMounted, provide, ref, watch} from "vue"
+import {APIConfigDialog, APIConfigPanel, APIConfigStore} from "vue-f-misc"
 
 const store = new APIConfigStore("")
 provide(APIConfigStore.KEY, store)
@@ -17,7 +15,7 @@ watch(googleID, id => store.googleClientID = id)
         <v-text-field style="max-width: 600px; width: 100%" v-model="googleID" label="Google Client ID"/>
         <APIConfigDialog/>
         <br>
-        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;">
+        <v-card variant="outlined" style="max-width: 600px; width: 100%;padding: 1rem;resize: both;">
             <APIConfigPanel/>
         </v-card>
     </div>
