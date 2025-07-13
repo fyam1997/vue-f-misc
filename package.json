@@ -10,7 +10,8 @@
     "src"
   ],
   "scripts": {
-    "build": "rimraf dist && vite build"
+    "build": "rimraf dist && vite build",
+    "dev": "rimraf dist && vite build --watch"
   },
   "peerDependencies": {
     "idb": "^8.0.3",
