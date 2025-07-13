@@ -10,7 +10,6 @@
     "src"
   ],
   "scripts": {
-    "demo": "vite --host",
     "build": "rimraf dist && vite build"
   },
   "peerDependencies": {
