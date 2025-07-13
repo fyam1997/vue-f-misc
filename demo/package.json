@@ -6,19 +6,22 @@
     "src"
   ],
   "scripts": {
-    "dev": "vite --host"
+    "dev": "vite --host",
+    "deploy": "vite build && node deploy.js"
   },
   "dependencies": {
     "idb": "^8.0.3",
     "material-design-icons-iconfont": "^6.7.0",
     "sortablejs": "^1.15.6",
     "vue": "^3.4.0",
-    "vuetify": "^3.0.0",
-    "vue-f-misc": "github:fyam1997/vue-f-misc#feature/separate-demo"
+    "vue-f-misc": "link:..",
+    "vuetify": "^3.0.0"
   },
   "devDependencies": {
-    "@vueuse/core": "^13.1.0",
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vueuse/core": "^13.1.0",
+    "gh-pages": "^6.3.0",
+    "git-rev-sync": "^3.0.2",
     "rimraf": "^6.0.1",
     "vite": "^6.2.4"
   }

@@ -1,5 +1,5 @@
 export { default as APIConfigPanel } from './components/APIConfigPanel.vue';
-export { default as APIConfigDialog } from './components/APIConfigPanel.vue';
+export { default as APIConfigDialog } from './components/APIConfigDialog.vue';
 export { default as IndexManageDialog } from './components/IndexManageDialog.vue';
 export { default as IndexManagePanel } from './components/IndexManagePanel.vue';
 export * from './apiconfig/APIConfigViewModel';
