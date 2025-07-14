@@ -17,8 +17,12 @@ export function useSharedFlow<T>(
         }
     })
     watch(vueRef, async (value) => {
-        const rawValue = toRaw(value)
-        await sharedFlow.emit(rawValue)
+        // if last value is undefine, stop any update, no edit event will be push to upstream.
+        //  only can unlock this state by emitting a valid value from upstream.
+        if (sharedFlow.lastValue !== undefined) {
+            const rawValue = toRaw(value)
+            await sharedFlow.emit(rawValue)
+        }
     }, options)
     return vueRef
 }

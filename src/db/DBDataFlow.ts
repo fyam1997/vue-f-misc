@@ -10,18 +10,20 @@ export class DBDataFlow<T> extends SharedFlow<T | undefined> {
         super()
     }
 
-    async emit(newValue: T | undefined): Promise<void> {
-        if (newValue === undefined) {
-            await (await this.db).delete(this.store, this.key)
-        } else {
-            await (await this.db).put(this.store, newValue, this.key)
-        }
+    async emit(newValue: T): Promise<void> {
+        await (await this.db).put(this.store, newValue, this.key)
         await super.emit(newValue)
+    }
+
+    async delete(): Promise<void> {
+        await (await this.db).delete(this.store, this.key)
+        await super.emit(undefined)
     }
 
     async loadValue(): Promise<T | undefined> {
         const dbValue = await (await this.db).get(this.store, this.key)
-        await this.emit(dbValue)
+        // won't put to db when load value
+        await super.emit(dbValue)
         return dbValue
     }
 
