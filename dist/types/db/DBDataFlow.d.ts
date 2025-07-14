@@ -5,7 +5,8 @@ export declare class DBDataFlow<T> extends SharedFlow<T | undefined> {
     private store;
     private key;
     constructor(db: Promise<IDBPDatabase>, store: string, key: string | number);
-    emit(newValue: T | undefined): Promise<void>;
+    emit(newValue: T): Promise<void>;
+    delete(): Promise<void>;
     loadValue(): Promise<T | undefined>;
     setKey(key: string | number): Promise<T | undefined>;
 }

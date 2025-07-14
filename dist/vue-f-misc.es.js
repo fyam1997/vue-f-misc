@@ -180,11 +180,14 @@ class Xs extends Ys {
     super(), this.db = t, this.store = n, this.key = a;
   }
   async emit(t) {
-    t === void 0 ? await (await this.db).delete(this.store, this.key) : await (await this.db).put(this.store, t, this.key), await super.emit(t);
+    await (await this.db).put(this.store, t, this.key), await super.emit(t);
+  }
+  async delete() {
+    await (await this.db).delete(this.store, this.key), await super.emit(void 0);
   }
   async loadValue() {
     const t = await (await this.db).get(this.store, this.key);
-    return await this.emit(t), t;
+    return await super.emit(t), t;
   }
   async setKey(t) {
     return this.key = t, this.loadValue();
@@ -357,8 +360,10 @@ function za(e, t, n) {
   return a.value = e.lastValue ?? t, e.collect((l) => {
     l === void 0 ? a.value = t : a.value = l;
   }), ee(a, async (l) => {
-    const i = Oe(l);
-    await e.emit(i);
+    if (e.lastValue !== void 0) {
+      const i = Oe(l);
+      await e.emit(i);
+    }
   }, n), a;
 }
 const cn = class cn {
@@ -395,11 +400,11 @@ const cn = class cn {
   }
   async addConfig() {
     const t = Date.now();
-    this.idList.value.push({ id: t, name: "New Config " + t }), await this.selectConfig(t);
+    this.idList.value.push({ id: t, name: "New Config " + t }), await this.selectConfig(t), await this.store.config.emit({ baseURL: "", apiKey: "", model: "" });
   }
   async deleteConfig() {
     const t = this.id.value;
-    await this.store.config.emit(void 0);
+    await this.store.config.delete();
     const n = this.idList.value, a = n.findIndex((o) => o.id === t);
     n.length === 1 && await this.addConfig(), n.splice(a, 1);
     const l = Math.min(a, n.length - 1), i = n[l].id;
