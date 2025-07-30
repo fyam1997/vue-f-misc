@@ -10,9 +10,6 @@ export function useSharedFlow<T>(
     const vueRef = ref()
     vueRef.value = sharedFlow.lastValue ?? defaultValue
     sharedFlow.collect(value => {
-        if (value === sharedFlow.lastValue){
-            return
-        }
         if (value === undefined) {
             vueRef.value = defaultValue
         } else {
