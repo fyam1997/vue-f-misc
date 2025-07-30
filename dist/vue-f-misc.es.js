@@ -166,7 +166,7 @@ class Ys {
     it(this, "lastValue");
   }
   async emit(t) {
-    this.lastValue !== t && (this.lastValue = t, this.collectors.forEach((n) => n(t)));
+    this.lastValue = t, this.collectors.forEach((n) => n(t));
   }
   collect(t) {
     this.collectors.push(t);
@@ -358,7 +358,7 @@ async function lu(e, t, n) {
 function za(e, t, n) {
   const a = J();
   return a.value = e.lastValue ?? t, e.collect((l) => {
-    l === void 0 ? a.value = t : a.value = l;
+    l !== e.lastValue && (l === void 0 ? a.value = t : a.value = l);
   }), ee(a, async (l) => {
     if (e.lastValue !== void 0) {
       const i = Oe(l);
