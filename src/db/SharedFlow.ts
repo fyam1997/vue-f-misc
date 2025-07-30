@@ -5,9 +5,6 @@ export class SharedFlow<T> {
     lastValue?: T | undefined
 
     async emit(newValue: T) {
-        if (this.lastValue === newValue) {
-            return
-        }
         this.lastValue = newValue
         this.collectors.forEach(observer => observer(newValue))
     }
