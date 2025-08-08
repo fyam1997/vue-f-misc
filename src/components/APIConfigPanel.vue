@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {APIConfigViewModel} from "../apiconfig/APIConfigViewModel";
-import {VBtn, VCombobox, VTextField} from 'vuetify/components'
+import { APIConfigViewModel } from "../apiconfig/APIConfigViewModel"
+import { VBtn, VCombobox, VTextField } from "vuetify/components"
 import IndexManageDialog from "./IndexManageDialog.vue"
 
 const viewModel = APIConfigViewModel.injectOrCreate()
@@ -30,12 +30,8 @@ function onIndexSelected(value: any) {
                 @click="viewModel.loadBackup()"
                 title="Download from drive"
             />
-            <v-spacer/>
-            <IndexManageDialog
-                :list="idList"
-                idProp="id"
-                titleProp="name"
-            />
+            <v-spacer />
+            <IndexManageDialog :list="idList" idProp="id" titleProp="name" />
             <v-btn
                 icon="md:note_add"
                 variant="plain"
@@ -83,6 +79,4 @@ function onIndexSelected(value: any) {
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,5 +1,5 @@
-import {IDBPDatabase} from 'idb'
-import {SharedFlow} from "./SharedFlow"
+import { IDBPDatabase } from "idb"
+import { SharedFlow } from "./SharedFlow"
 
 export class DBDataFlow<T> extends SharedFlow<T | undefined> {
     constructor(
@@ -33,9 +33,11 @@ export class DBDataFlow<T> extends SharedFlow<T | undefined> {
     }
 }
 
-export function cachedDB(provider: () => Promise<IDBPDatabase>): Promise<IDBPDatabase> {
+export function cachedDB(
+    provider: () => Promise<IDBPDatabase>,
+): Promise<IDBPDatabase> {
     let cached: IDBPDatabase | undefined = undefined
-    return new Promise<IDBPDatabase>(async resolve => {
+    return new Promise<IDBPDatabase>(async (resolve) => {
         if (!cached) {
             cached = await provider()
         }

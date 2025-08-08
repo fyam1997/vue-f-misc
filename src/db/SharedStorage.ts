@@ -1,5 +1,5 @@
-import {openDB} from "idb";
-import {cachedDB, DBDataFlow} from "./DBDataFlow";
+import { openDB } from "idb"
+import { cachedDB, DBDataFlow } from "./DBDataFlow"
 
 export enum SharedStore {
     APIConfig = "APIConfig",

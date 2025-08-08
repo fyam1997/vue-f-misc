@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import SharedFlowDemo from "./SharedFlowDemo.vue"
-import {computed, ref, shallowRef} from "vue"
+import { computed, ref, shallowRef } from "vue"
 import ApiConfigDemo from "./APIConfigDemo.vue"
 import IndexManageDemo from "./IndexManageDemo.vue"
-import {useWindowSize} from "@vueuse/core"
-import {VList, VListItem, VMain} from 'vuetify/components'
+import { useWindowSize } from "@vueuse/core"
+import { VList, VListItem, VMain } from "vuetify/components"
 
 const demos = [
-    {name: "APIConfigPanel", component: ApiConfigDemo},
-    {name: "IndexManage", component: IndexManageDemo},
-    {name: "SharedFlow", component: SharedFlowDemo},
+    { name: "APIConfigPanel", component: ApiConfigDemo },
+    { name: "IndexManage", component: IndexManageDemo },
+    { name: "SharedFlow", component: SharedFlowDemo },
 ]
 const selectedDemo = shallowRef(demos[0])
 const screenWidth = useWindowSize().width
@@ -22,7 +22,7 @@ const drawer = ref(largeScreen.value)
         <v-btn
             icon="md:menu"
             @click="drawer = !drawer"
-            style="position: fixed; top: 16px; left: 16px; z-index: 2000;"
+            style="position: fixed; top: 16px; left: 16px; z-index: 2000"
         />
         <v-navigation-drawer v-model="drawer" :permanent="largeScreen">
             <v-list class="drawer-list">
@@ -38,11 +38,10 @@ const drawer = ref(largeScreen.value)
         </v-navigation-drawer>
         <v-main>
             <div class="main-container">
-                <component :is="selectedDemo.component"/>
+                <component :is="selectedDemo.component" />
             </div>
         </v-main>
     </v-app>
-
 </template>
 
 <style scoped>

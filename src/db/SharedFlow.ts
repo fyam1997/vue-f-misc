@@ -6,7 +6,7 @@ export class SharedFlow<T> {
 
     async emit(newValue: T) {
         this.lastValue = newValue
-        this.collectors.forEach(observer => observer(newValue))
+        this.collectors.forEach((observer) => observer(newValue))
     }
 
     collect(collector: FlowCollector<T>) {
@@ -14,6 +14,6 @@ export class SharedFlow<T> {
     }
 
     removeObserver(collector: FlowCollector<T>) {
-        this.collectors = this.collectors.filter(item => item !== collector)
+        this.collectors = this.collectors.filter((item) => item !== collector)
     }
 }
