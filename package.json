@@ -21,10 +21,11 @@
     "vuetify": "^3.0.0"
   },
   "devDependencies": {
-    "@vueuse/core": "^13.1.0",
     "@types/google.accounts": "^0.0.17",
     "@types/sortablejs": "^1.15.8",
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vueuse/core": "^13.1.0",
+    "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "vite": "^6.2.4",
     "vite-plugin-dts": "^4.5.4"
