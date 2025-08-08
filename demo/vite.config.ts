@@ -1,5 +1,5 @@
-import {defineConfig} from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
 
 // ref: https://github.com/wuruoyun/vue-component-lib-starter
 

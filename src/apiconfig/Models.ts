@@ -1,4 +1,4 @@
-import {apiConfig} from "../db/SharedStorage";
+import { apiConfig } from "../db/SharedStorage"
 
 export interface APIConfigModel {
     baseURL: string
@@ -13,8 +13,8 @@ export interface APIConfigIndex {
 
 export interface APIConfigBackup {
     configs: {
-        config: APIConfigModel,
-        index: APIConfigIndex,
+        config: APIConfigModel
+        index: APIConfigIndex
     }[]
 }
 
@@ -23,14 +23,13 @@ export class APIConfigStore {
     idList = apiConfig<APIConfigIndex[]>("index")
     config = apiConfig<APIConfigModel>(0)
 
-    constructor(public googleClientID: string) {
-    }
+    constructor(public googleClientID: string) {}
 
     async init() {
         const list = await this.idList.loadValue()
         if (list === undefined) {
             const newID = Date.now()
-            await this.idList.emit([{id: newID, name: "New Config " + newID}])
+            await this.idList.emit([{ id: newID, name: "New Config " + newID }])
         }
 
         let id = await this.id.loadValue()
@@ -41,7 +40,7 @@ export class APIConfigStore {
 
         const config = await this.config.setKey(id)
         if (config === undefined) {
-            await this.config.emit({baseURL: "", apiKey: "", model: ""})
+            await this.config.emit({ baseURL: "", apiKey: "", model: "" })
         }
     }
 

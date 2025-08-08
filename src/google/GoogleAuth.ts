@@ -1,6 +1,6 @@
 export async function loadGoogleAuth(): Promise<void> {
     // skip if library already loaded
-    if (typeof google !== 'undefined') {
+    if (typeof google !== "undefined") {
         return Promise.resolve()
     }
     return new Promise((resolve, reject) => {
@@ -18,11 +18,14 @@ export async function loadGoogleAuth(): Promise<void> {
     })
 }
 
-export async function authorizeDrive(scope: string, clientID: string): Promise<string> {
+export async function authorizeDrive(
+    scope: string,
+    clientID: string,
+): Promise<string> {
     return new Promise((resolve, reject) => {
         const client = google.accounts.oauth2.initTokenClient({
             client_id: clientID,
-            callback: response => resolve(response.access_token),
+            callback: (response) => resolve(response.access_token),
             error_callback: reject,
             scope: scope,
         })

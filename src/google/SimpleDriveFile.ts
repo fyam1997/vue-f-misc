@@ -1,15 +1,26 @@
-import {authorizeDrive, loadGoogleAuth, logoutToken} from "./GoogleAuth";
-import {createDriveTextFile, getDriveFile, getDriveFileID, updateDriveTextFile} from "./GoogleDriveAPI";
+import { authorizeDrive, loadGoogleAuth, logoutToken } from "./GoogleAuth"
+import {
+    createDriveTextFile,
+    getDriveFile,
+    getDriveFileID,
+    updateDriveTextFile,
+} from "./GoogleDriveAPI"
 
-export async function getSimpleDriveFile(clientID: string, fileName: string): Promise<string | undefined> {
+export async function getSimpleDriveFile(
+    clientID: string,
+    fileName: string,
+): Promise<string | undefined> {
     await loadGoogleAuth()
-    const token = await authorizeDrive('https://www.googleapis.com/auth/drive.appdata', clientID)
+    const token = await authorizeDrive(
+        "https://www.googleapis.com/auth/drive.appdata",
+        clientID,
+    )
     try {
         const id = await getDriveFileID(token, `name='${fileName}'`)
         if (id === undefined) {
             return undefined
         }
-        return await getDriveFile(id, token);
+        return await getDriveFile(id, token)
     } catch (error) {
         console.error(error)
         return undefined
@@ -18,9 +29,16 @@ export async function getSimpleDriveFile(clientID: string, fileName: string): Pr
     }
 }
 
-export async function setSimpleDriveFile(clientID: string, fileName: string, content: string): Promise<void> {
+export async function setSimpleDriveFile(
+    clientID: string,
+    fileName: string,
+    content: string,
+): Promise<void> {
     await loadGoogleAuth()
-    const token = await authorizeDrive('https://www.googleapis.com/auth/drive.appdata', clientID)
+    const token = await authorizeDrive(
+        "https://www.googleapis.com/auth/drive.appdata",
+        clientID,
+    )
     try {
         const id = await getDriveFileID(token, `name='${fileName}'`)
         if (id) {

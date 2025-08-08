@@ -1,8 +1,11 @@
-import {APIConfigBackup, APIConfigModel, APIConfigStore} from "./Models"
-import {apiConfig} from "../db/SharedStorage"
-import {getSimpleDriveFile, setSimpleDriveFile} from "../google/SimpleDriveFile"
-import {useSharedFlow} from "../db/SharedFlowRef"
-import {computed, inject, provide} from "vue";
+import { APIConfigBackup, APIConfigModel, APIConfigStore } from "./Models"
+import { apiConfig } from "../db/SharedStorage"
+import {
+    getSimpleDriveFile,
+    setSimpleDriveFile,
+} from "../google/SimpleDriveFile"
+import { useSharedFlow } from "../db/SharedFlowRef"
+import { computed, inject, provide } from "vue"
 
 export class APIConfigViewModel {
     id
@@ -12,11 +15,17 @@ export class APIConfigViewModel {
 
     constructor(private store: APIConfigStore) {
         this.id = useSharedFlow(store.id, 0)
-        this.idList = useSharedFlow(store.idList, [], {deep: true})
-        this.config = useSharedFlow(store.config, {baseURL: "", apiKey: "", model: ""}, {deep: true})
+        this.idList = useSharedFlow(store.idList, [], { deep: true })
+        this.config = useSharedFlow(
+            store.config,
+            { baseURL: "", apiKey: "", model: "" },
+            { deep: true },
+        )
         this.selectedIndex = computed(() => {
-            const found = this.idList.value.find(item => item.id == this.id.value)
-            return found || {id: 0, name: ""}
+            const found = this.idList.value.find(
+                (item) => item.id == this.id.value,
+            )
+            return found || { id: 0, name: "" }
         })
     }
 
@@ -35,20 +44,33 @@ export class APIConfigViewModel {
                 })
             }
         }
-        const backup = {configs: configs}
-        await setSimpleDriveFile(this.store.googleClientID, "APIConfigs.json", JSON.stringify(backup))
+        const backup = { configs: configs }
+        await setSimpleDriveFile(
+            this.store.googleClientID,
+            "APIConfigs.json",
+            JSON.stringify(backup),
+        )
     }
 
     async loadBackup() {
-        if (!confirm("Will overwrite the local configuration. New Added config will be kept.")) {
+        if (
+            !confirm(
+                "Will overwrite the local configuration. New Added config will be kept.",
+            )
+        ) {
             return
         }
-        const text = (await getSimpleDriveFile(this.store.googleClientID, "APIConfigs.json"))!
+        const text = (await getSimpleDriveFile(
+            this.store.googleClientID,
+            "APIConfigs.json",
+        ))!
         const backup: APIConfigBackup = JSON.parse(text)
 
         const idList = this.idList.value
         for (const item of backup.configs) {
-            const existingIndex = idList.findIndex(i => i.id === item.index.id)
+            const existingIndex = idList.findIndex(
+                (i) => i.id === item.index.id,
+            )
             if (existingIndex !== -1) {
                 idList[existingIndex] = item.index
             } else {
@@ -61,16 +83,16 @@ export class APIConfigViewModel {
 
     async addConfig() {
         const newID = Date.now()
-        this.idList.value.push({id: newID, name: "New Config " + newID})
+        this.idList.value.push({ id: newID, name: "New Config " + newID })
         await this.selectConfig(newID)
-        await this.store.config.emit({baseURL: "", apiKey: "", model: ""})
+        await this.store.config.emit({ baseURL: "", apiKey: "", model: "" })
     }
 
     async deleteConfig() {
         const deleteID = this.id.value
         await this.store.config.delete()
         const list = this.idList.value
-        const index = list.findIndex(item => item.id === deleteID)
+        const index = list.findIndex((item) => item.id === deleteID)
         if (list.length === 1) {
             await this.addConfig()
         }

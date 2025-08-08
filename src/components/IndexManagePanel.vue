@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Sortable from 'sortablejs'
-import {useTemplateRef, watch} from "vue"
+import Sortable from "sortablejs"
+import { useTemplateRef, watch } from "vue"
 
 export interface IndexManagePanelProps {
     list: Array<any>
@@ -10,23 +10,20 @@ export interface IndexManagePanelProps {
 }
 
 const props = defineProps<IndexManagePanelProps>()
-const itemsRef = useTemplateRef('items')
+const itemsRef = useTemplateRef("items")
 
-watch(itemsRef, element => {
+watch(itemsRef, (element) => {
     if (!element) return
-    Sortable.create(
-        element,
-        {
-            animation: 200,
-            handle: '.handle',
-            onEnd: (evt) => {
-                if (evt.oldIndex !== undefined && evt.newIndex !== undefined) {
-                    const movedItem = props.list.splice(evt.oldIndex, 1)[0]
-                    props.list.splice(evt.newIndex, 0, movedItem)
-                }
-            },
+    Sortable.create(element, {
+        animation: 200,
+        handle: ".handle",
+        onEnd: (evt) => {
+            if (evt.oldIndex !== undefined && evt.newIndex !== undefined) {
+                const movedItem = props.list.splice(evt.oldIndex, 1)[0]
+                props.list.splice(evt.newIndex, 0, movedItem)
+            }
         },
-    )
+    })
 })
 </script>
 
@@ -37,14 +34,10 @@ watch(itemsRef, element => {
             class="d-flex flex-row align-center pt-2"
             :key="item[props.idProp ?? 'id']"
         >
-            <v-icon-btn
-                class="handle"
-                icon="md:drag_handle"
-                variant="plain"
-            />
+            <v-icon-btn class="handle" icon="md:drag_handle" variant="plain" />
             <VTextField
                 class="pr-6"
-                v-model="item[props.titleProp?? 'name']"
+                v-model="item[props.titleProp ?? 'name']"
                 hide-details
                 :readonly="props.titleReadonly"
             />
